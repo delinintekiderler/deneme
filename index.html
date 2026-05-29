@@ -13,10 +13,13 @@
             justify-content: center;
             align-items: center;
             background-color: #ffe6eb;
+            background-image: url('asd.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             font-family: 'Arial', sans-serif;
             overflow: hidden;
         }
-
         .container {
             text-align: center;
             background: white;
@@ -25,20 +28,18 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             position: relative;
         }
-
         h1 {
-            color: #ff477e;
+            color: 
+#ff477e;
             margin-bottom: 40px;
             font-size: 2.5rem;
         }
-
         .buttons {
             display: flex;
             justify-content: center;
             gap: 30px;
             position: relative;
         }
-
         button {
             padding: 15px 40px;
             font-size: 1.2rem;
@@ -48,59 +49,61 @@
             font-weight: bold;
             transition: all 0.3s ease;
         }
-
         #evet {
-            background-color: #ff477e;
+            background-color: 
+#ff477e;
             color: white;
             box-shadow: 0 5px 15px rgba(255, 71, 126, 0.4);
         }
-
         #evet:hover {
-            background-color: #ff2a66;
+            background-color: 
+#ff2a66;
             transform: scale(1.05);
         }
-
         #hayir {
             background-color: #ccc;
             color: #333;
             position: relative;
         }
-
         #cevap {
             margin-top: 30px;
             font-size: 2rem;
-            color: #ff477e;
+            color: 
+#ff477e;
             font-weight: bold;
             display: none;
         }
     </style>
 </head>
 <body>
-
     <div class="container">
         <h1>Beni Seviyor musun?</h1>
         <div class="buttons">
             <button id="evet" onclick="cevapEvet()">Evet</button>
             <button id="hayir" onmouseover="hareketEt()">Hayır</button>
         </div>
-        <div id="cevap">Seni çok seviyorum! ❤️</div>
+        <div id="cevap"> Bende seni çok seviyorum! ❤️</div>
     </div>
-
     <script>
         function cevapEvet() {
             document.getElementById('cevap').style.display = 'block';
         }
-
         function hareketEt() {
             var hayirBtn = document.getElementById('hayir');
-            
-            // Butonun rastgele ekranda kaçacağı koordinatları hesaplar
-            var x = Math.random() * (window.innerWidth - 150);
-            var y = Math.random() * (window.innerHeight - 100);
-            
-            hayirBtn.style.position = 'absolute';
-            hayirBtn.style.left = x + 'px';
-            hayirBtn.style.top = y + 'px';
+
+var butonW = hayirBtn.offsetWidth;
+    var butonH = hayirBtn.offsetHeight;
+    
+    var x = Math.random() * (window.innerWidth - butonW - 20);
+    var y = Math.random() * (window.innerHeight - butonH - 20);
+    
+    x = Math.max(10, x);
+    y = Math.max(10, y);
+    
+    hayirBtn.style.position = 'fixed';
+    hayirBtn.style.left = x + 'px';
+    hayirBtn.style.top = y + 'px';
+    hayirBtn.style.transition = 'left 0.3s ease, top 0.3s ease';
         }
     </script>
 </body>
