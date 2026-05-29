@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benim Sitem</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0f0f0f;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #aaaaaa;
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+
+        .butonlar {
+            display: flex;
+            gap: 20px;
+        }
+
+        .buton {
+            padding: 14px 32px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .buton:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .buton-1 {
+            background-color: #6c63ff;
+            color: #ffffff;
+        }
+
+        .buton-2 {
+            background-color: #ffffff;
+            color: #0f0f0f;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hoş Geldiniz</h1>
+    <p>Aşağıdan devam etmek istediğiniz bölümü seçin.</p>
+
+    <div class="butonlar">
+        <a href="https://google.com" class="buton buton-1">Buton 1</a>
+        <a href="https://youtube.com" class="buton buton-2">Buton 2</a>
+    </div>
+
+</body>
+</html>
