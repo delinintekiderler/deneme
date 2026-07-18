@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beni Seviyor Musun?</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffe6eb;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .kolaj {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 5px;
+            z-index: -1;
+        }
+
+        .kolaj img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        h1 {
+            color: #ff477e;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            position: relative;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        #evet {
+            background-color: #ff477e;
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 71, 126, 0.4);
+        }
+
+        #evet:hover {
+            background-color: #ff2a66;
+            transform: scale(1.05);
+        }
+
+        #hayir {
+            background-color: #ccc;
+            color: #333;
+            position: relative;
+        }
+
+        #cevap {
+            margin-top: 30px;
+            font-size: 2rem;
+            color: #ff477e;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="kolaj">
+        <img src="foto1.jpg" alt="foto1">
+        <img src="foto2.jpg" alt="foto2">
+        <img src="foto3.jpg" alt="foto3">
+        <img src="foto4.jpg" alt="foto4">
+        <img src="foto5.jpg" alt="foto5">
+        <img src="foto6.jpg" alt="foto6">
+    </div>
+
+    <div class="container">
+        <h1>Beni Seviyor musun?</h1>
+        <div class="buttons">
+            <button id="evet" onclick="cevapEvet()">Evet</button>
+            <button id="hayir" onmouseover="hareketEt()">Hayır</button>
+        </div>
+        <div id="cevap"> Bende seni çok seviyorum! ❤️</div>
+    </div>
+
+    <script>
+        function cevapEvet() {
+            document.getElementById('cevap').style.display = 'block';
+        }
+        function hareketEt() {
+            var hayirBtn = document.getElementById('hayir');
+            var butonW = hayirBtn.offsetWidth;
+            var butonH = hayirBtn.offsetHeight;
+
+            var x = Math.random() * (window.innerWidth - butonW - 20);
+            var y = Math.random() * (window.innerHeight - butonH - 20);
+
+            x = Math.max(10, x);
+            y = Math.max(10, y);
+
+            hayirBtn.style.position = 'fixed';
+            hayirBtn.style.left = x + 'px';
+            hayirBtn.style.top = y + 'px';
+            hayirBtn.style.transition = 'left 0.3s ease, top 0.3s ease';
+        }
+    </script>
+</body>
+</html>
