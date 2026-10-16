@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Beni Seviyor Musun?</title>
+    <title>Seni Çok Seviyorum</title>
     <style>
         * { box-sizing: border-box; }
 
@@ -15,7 +15,7 @@
 
         body {
             min-height: 100vh;
-            min-height: 100dvh; /* iPhone Safari adres çubuğu sorunu için */
+            min-height: 100dvh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -24,7 +24,6 @@
             overflow: hidden;
         }
 
-        /* Kolaj: bilgisayarda 3x2 */
         .kolaj {
             position: fixed;
             top: 0;
@@ -45,17 +44,11 @@
             height: 100%;
             min-width: 0;
             min-height: 0;
-            object-fit: cover;        /* kutuyu doldur, bozulma yok */
+            object-fit: cover;
             object-position: center;
             display: block;
         }
 
-        /* Yatay çekilen 4. foto için istersen odak noktasını buradan değiştir */
-        .kolaj img:nth-child(4) {
-            object-position: center center;
-        }
-
-        /* Telefon: 2 sütun x 3 satır (dikey fotoğraflara uygun) */
         @media (max-width: 768px), (orientation: portrait) {
             .kolaj {
                 grid-template-columns: repeat(2, 1fr);
@@ -63,71 +56,23 @@
             }
         }
 
-        .container {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.35);
-            -webkit-backdrop-filter: blur(6px);
-            backdrop-filter: blur(6px);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            position: relative;
-            width: min(90vw, 520px);
-        }
-
         h1 {
-            color: #ff477e;
-            margin: 0 0 30px;
-            font-size: 2.2rem;
-        }
-
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        button {
-            padding: 14px 36px;
-            font-size: 1.2rem;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            touch-action: manipulation;
-        }
-
-        #evet {
-            background-color: #ff477e;
-            color: white;
-            box-shadow: 0 5px 15px rgba(255, 71, 126, 0.4);
-        }
-
-        #evet:hover {
-            background-color: #ff2a66;
-            transform: scale(1.05);
-        }
-
-        #hayir {
-            background-color: #ccc;
-            color: #333;
-            z-index: 10;
-        }
-
-        #cevap {
-            margin-top: 30px;
-            font-size: 1.8rem;
-            color: #ff477e;
-            font-weight: bold;
-            display: none;
+            margin: 0;
+            padding: 0 16px;
+            text-align: center;
+            color: #b3122a;
+            font-size: 3rem;
+            /* Beyaz far efekti. Siyah istersen #fff yerine #000 yaz. */
+            text-shadow:
+                0 0 4px #fff,
+                0 0 8px #fff,
+                0 0 14px #fff,
+                0 0 22px rgba(255, 255, 255, 0.9),
+                0 0 34px rgba(255, 255, 255, 0.7);
         }
 
         @media (max-width: 480px) {
-            .container { padding: 28px 18px; }
-            h1 { font-size: 1.7rem; margin-bottom: 24px; }
-            button { padding: 12px 28px; font-size: 1.05rem; }
-            #cevap { font-size: 1.4rem; }
+            h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -141,52 +86,6 @@
         <img src="foto6.jpeg" alt="foto6">
     </div>
 
-    <div class="container">
-        <h1>Beni Seviyor musun?</h1>
-        <div class="buttons">
-            <button id="evet" onclick="cevapEvet()">Evet</button>
-            <button id="hayir">Hayır</button>
-        </div>
-        <div id="cevap">Bende seni çok seviyorum! ❤️</div>
-    </div>
-
-    <script>
-        function cevapEvet() {
-            document.getElementById('cevap').style.display = 'block';
-        }
-
-        var hayirBtn = document.getElementById('hayir');
-
-        function hareketEt(e) {
-            if (e) e.preventDefault();
-
-            // backdrop-filter fixed'i container'a hapsettiği için body'ye taşıyoruz
-            if (hayirBtn.parentNode !== document.body) {
-                var r = hayirBtn.getBoundingClientRect();
-                hayirBtn.style.position = 'fixed';
-                hayirBtn.style.left = r.left + 'px';
-                hayirBtn.style.top = r.top + 'px';
-                document.body.appendChild(hayirBtn);
-                hayirBtn.offsetWidth; // reflow, animasyon düzgün başlasın
-            }
-
-            var butonW = hayirBtn.offsetWidth;
-            var butonH = hayirBtn.offsetHeight;
-
-            var x = Math.random() * (window.innerWidth - butonW - 20);
-            var y = Math.random() * (window.innerHeight - butonH - 20);
-
-            x = Math.max(10, x);
-            y = Math.max(10, y);
-
-            hayirBtn.style.transition = 'left 0.3s ease, top 0.3s ease';
-            hayirBtn.style.left = x + 'px';
-            hayirBtn.style.top = y + 'px';
-        }
-
-        hayirBtn.addEventListener('mouseover', hareketEt);
-        hayirBtn.addEventListener('touchstart', hareketEt, { passive: false });
-        hayirBtn.addEventListener('click', hareketEt);
-    </script>
+    <h1>Seni Çok Seviyorum ❤️</h1>
 </body>
 </html>
